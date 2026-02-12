@@ -30,7 +30,6 @@ The app helps users better remember customized words and phrases through animate
 
 #### Data Privacy and Security
 
-- To provide accurate restroom navigation, we need access to your device's location.
 - All your personal information and usage data will be stored locally on your device and will not be uploaded to the internet or iCloud.
 - We promise not to collect, store, or share any of your personal data.
 
