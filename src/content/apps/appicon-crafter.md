@@ -1,6 +1,6 @@
 ---
 title: AppIcon Crafter
-subtitle: A professional app icon creation tool for iOS, macOS, Windows, and Android platforms.
+subtitle: A professional app icon creation tool for iOS and macOS platforms.
 pubDate: 2026-03-19
 platforms:
   - macOS
@@ -21,7 +21,7 @@ Are you looking for a powerful yet easy-to-use app icon creation tool? AppIcon C
 - **Flexible Color Settings**: Choose from solid colors or create beautiful gradients with 8 preset directions (left→right, right→left, top→bottom, bottom→top, top-left→bottom-right, top-right→bottom-left, bottom-left→top-right, bottom-right→top-left). Support for transparent, solid, and gradient background types. Support custom foreground and background colors.
 - **Customizable Sizes**: Generate icons in sizes ranging from 64px to 4096px, perfect for all platforms and devices.
 - **High-Quality Export**: Export in PNG format with full transparency support. Ensure crisp, clear icons on all devices.
-- **Cross-Platform Support**: Create app icons for iOS, macOS, Windows, Android, and other platforms from a single design.
+- **Cross-Platform Support**: Create app icons for iOS, macOS, and other platforms from a single design.
 - **Real-time Preview**: See your icon design come to life instantly with live preview functionality.
 - **Intuitive Interface**: Modern SwiftUI-based interface designed for ease of use, no design experience required.
 - **Dark Mode Support**: Full dark mode support for comfortable working in any lighting condition.
