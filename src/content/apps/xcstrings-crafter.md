@@ -1,6 +1,6 @@
 ---
 title: XCStrings Crafter
-subtitle: The missing piece of Xcode localization
+subtitle: XCStrings Editor & Localization Tool
 pubDate: 2026-04-03
 platforms:
   - macOS
