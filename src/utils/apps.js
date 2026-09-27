@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import { markdown } from "@astropub/md";
 import { getCollection } from "astro:content";
 
@@ -75,7 +76,12 @@ const normalizeApps = async (app) => {
 		slug: data.slug ?? slug,
 		url: data.redirectUrl ?? `/${slug}`,
 		isRedirect: data.redirectUrl !== undefined,
-		iconUrl: `/apps/${slug}/icon.jpg`,
+		// Prefer a PNG icon when present so rounded corners can have transparency.
+		iconUrl: fs.existsSync(
+			new URL(`../../public/apps/${slug}/icon.png`, import.meta.url),
+		)
+			? `/apps/${slug}/icon.png`
+			: `/apps/${slug}/icon.jpg`,
 		// We can use `forceHasiOSAppIcon` for both true/false override.
 		hasIOSAppIcon:
 			data.forceHasIosAppIcon ??
