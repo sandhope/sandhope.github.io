@@ -5,49 +5,48 @@ layout: "content-page"
 weight: 10
 ---
 
+These terms set out the ground rules for using the apps I make. Please read them before you start.
 
-Please take a moment to familiarize yourself with the following guidelines. They are designed to ensure a beneficial experience for us both.
+## Agreement
 
-## General
+Installing or using an app means you accept this document as it stands today and as I may revise it from time to time. The version posted here is always the current one.
 
-By using my apps, you agree to these terms and any subsequent changes. I may update them without direct notice. Always check the latest terms here.
+## What you may do
 
-## Permitted Use
+Use each app for its intended purpose. Reverse-engineering, attacking the app, or interfering with other people's use of it is not allowed.
 
-You may use my apps without restrictions for their intended purposes. However, malicious usage is strictly prohibited.
+## Ownership
 
-## Intellectual Property
+I own the apps and everything in them — the code, design, and text. These rights stay with me even after you download an app. You are granted a personal right to run the software, not to copy, alter, publish, or sell it.
 
-All content, features, and functionality of the apps are owned by me and protected by intellectual property laws. You may not reproduce, modify, distribute, or exploit any part of the apps without explicit permission.
+## App Store purchases
 
-## App Store
+When you download from Apple's App Store, Apple's own [standard license terms](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/) govern the transaction between you and Apple. The rest of this document covers the app itself.
 
-If you get my apps from the App Store, [Apple’s EULA](https://www.apple.com/legal/internet-services/itunes/dev/stdeula/) applies.
+## No guarantees
 
-## Software Integrity
+I work hard on these apps, but software can fail. They are supplied as-is, without a promise that every feature will work flawlessly in every situation. Keeping a backup of anything important to you is always wise.
 
-Perfection is the goal, but occasional bugs may appear. I deeply value the trust you place in my apps, yet I cannot promise complete flawlessness. For your peace of mind, regular backups are highly recommended.
+## Accessibility
 
-## Accessibility (ADA Compliance)
+I want these apps to be usable by as many people as possible. If something gets in your way, tell me through the [feedback page](/feedback) and I will try to improve it.
 
-I am committed to making my apps accessible to everyone, including individuals with disabilities. If you encounter any accessibility issues while using my website or apps, please [contact me](/feedback) to report them, and I will do my best to address and resolve the concerns promptly. Accessibility improvements are continuously being made to ensure a user-friendly experience for all.
+## Responsibility
 
-## Liability
+You decide how to use an app and accept the results of those choices. To the extent the law allows, I am not liable for loss or damage that comes from using or misusing the software.
 
-I disclaim all liability arising from the use or misuse of my apps. Users assume all risks and consequences tied to their actions based on the apps' functionality or content.
+## Your obligations
 
-## Indemnification
-
-You agree to indemnify me against any claims, liabilities, damages, or expenses arising from your use of the apps or breach of these terms.
+If your use of an app causes a claim against me, you agree to cover the resulting costs.
 
 ## Refunds
 
-For apps purchased on the Apple App Store, you can [request a refund](https://support.apple.com/en-us/HT204084). However, I would appreciate if you [reached out](/feedback) first. I may be able to resolve any problems you are having.
+Purchases made through Apple are refunded by Apple — see [their refund page](https://support.apple.com/en-us/HT204084). Writing to me [first](/feedback) is appreciated, since I may be able to sort out the problem directly.
 
 ## Support
 
-I aim to address all support and related queries within a week. There might be occasional delays, and I appreciate your understanding.
+Questions are usually answered within a week. Occasionally it takes longer, and I ask for your patience in those cases.
 
 ---
 
-Last Update: 2024-11-14
+Last Update: 2026-11-16
