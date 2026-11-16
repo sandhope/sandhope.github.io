@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="project container">
+  <h1 class="detail-title">{{ i18n "support_heading" }}</h1>
+  <p class="list-sub">{{ i18n "support_intro" }}</p>
+  <div class="support-emails">
+    <p class="support-email">
+      <a href="mailto:{{ site.Params.contactEmail }}">{{ site.Params.contactEmail }}</a>
+    </p>
+    <p class="support-email">
+      <a href="mailto:{{ site.Params.supportEmail }}">{{ site.Params.supportEmail }}</a>
+    </p>
+  </div>
+</article>
+{{ end }}

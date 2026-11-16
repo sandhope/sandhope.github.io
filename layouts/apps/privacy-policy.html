@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="project container">
+  <p class="breadcrumb-link"><a href="{{ .Parent.RelPermalink }}">&larr; {{ i18n "back_to" }} {{ .Parent.Title }}</a></p>
+  <h1 class="detail-title">{{ .Title }}</h1>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

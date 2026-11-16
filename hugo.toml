@@ -1,0 +1,49 @@
+# Site configuration — https://gohugo.io/configuration/
+baseURL = "https://sandhope.com/"
+title = "Sand Hope"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+enableGitInfo = false
+
+disableKinds = ["taxonomy", "term", "rss"]
+
+[params]
+  org = "Sand Hope"
+  githubOrg = "https://github.com/sandhope"
+  description = "Sand Hope — apps for macOS and iOS, built with care."
+  contactEmail = "z502545@icloud.com"
+  supportEmail = "fuxing.zhang@qq.com"
+
+[languages]
+  [languages.en]
+    locale = "en"
+    label = "English"
+    weight = 1
+    description = "Sand Hope — quality crafted apps for macOS and iOS."
+  [languages.zh]
+    locale = "zh-CN"
+    label = "中文"
+    weight = 2
+    description = "Sand Hope —— 用心打造的 macOS 与 iOS 应用。"
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+[outputs]
+  home = ["html", "sitemap"]
+  section = ["html"]
+  page = ["html"]
+
+[[redirects]]
+  from = "/thanks"
+  to = "/supporters"
+  status = 301
+
+[[redirects]]
+  from = "/lock-screen-one"
+  to = "/any-text"
+  status = 301

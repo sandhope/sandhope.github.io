@@ -1,0 +1,68 @@
+{{- /* Document head: meta, SEO, theme bootstrap, assets */ -}}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{{- $title := site.Title }}
+{{- if not .IsHome }}{{ $title = printf "%s · %s" .Title site.Title }}{{ end }}
+<title>{{ $title }}</title>
+
+{{- $desc := .Description | default (i18n "site_description") }}
+<meta name="description" content="{{ $desc }}">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="{{ .Permalink }}">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+
+{{- /* hreflang alternates for translated pages */}}
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{- end }}
+
+{{- /* Open Graph */}}
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+{{- with .Params.cover }}
+<meta property="og:image" content="{{ . | absURL }}">
+{{- end }}
+
+{{- /* Apply saved/system theme before first paint to avoid flashing */}}
+<script>
+  (function () {
+    var t = localStorage.getItem("theme");
+    if (t !== "light" && t !== "dark") {
+      t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    document.documentElement.dataset.theme = t;
+  })();
+</script>
+
+{{- /* Language redirect: only on the default-language home page, send the
+       visitor to their saved language (set by the header switcher), or match
+       the browser language on a first visit. Targets are read from the
+       hreflang alternate links above. Deep links and the other language's
+       home are never rewritten, so there is no redirect loop. */}}
+{{- if and .IsHome (eq .Language.Lang hugo.Sites.Default.Language.Lang) }}
+<script>
+  (function () {
+    var pref = localStorage.getItem("lang") ||
+      (navigator.languages && navigator.languages[0]) || navigator.language || "";
+    pref = pref.split("-")[0].toLowerCase();
+    if (!pref || pref === document.documentElement.lang.split("-")[0].toLowerCase()) return;
+    var links = document.querySelectorAll('link[rel="alternate"][hreflang]');
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].hreflang.split("-")[0].toLowerCase() === pref) {
+        location.replace(links[i].href);
+        return;
+      }
+    }
+  })();
+</script>
+{{- end }}
+
+{{- with resources.Get "css/main.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+{{- end }}
+{{- with resources.Get "js/main.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end }}

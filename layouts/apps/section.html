@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{- $apps := where site.RegularPages "Section" "apps" }}
+{{- $apps = where $apps "Params.appSlug" "!=" nil }}
+{{- $filter := .Params.filter }}
+{{- $showFilter := or (not $filter) (eq $filter "free") (eq $filter "paid") }}
+{{- if eq $filter "free" }}{{ $apps = where $apps "Params.isPaid" false }}
+{{- else if eq $filter "paid" }}{{ $apps = where $apps "Params.isPaid" true }}{{ end }}
+{{- $apps = where $apps "Params.isUnlisted" "!=" true }}
+<section class="section container page-list">
+  <header class="list-head">
+    {{- if not $showFilter }}<h1>{{ .Title }}</h1>{{ end }}
+    {{- if $showFilter }}
+    <nav class="filter-bar" aria-label="{{ i18n "filter_label" }}">
+      {{- $allApps := site.GetPage "/apps" }}
+      {{- $freeApps := site.GetPage "/apps/free" }}
+      {{- $paidApps := site.GetPage "/apps/paid" }}
+      <a class="filter-btn{{ if not $filter }} is-active{{ end }}" href="{{ $allApps.RelPermalink }}"{{ if not $filter }} aria-current="page"{{ end }}>{{ i18n "filter_all" }}</a>
+      <a class="filter-btn{{ if eq $filter "free" }} is-active{{ end }}" href="{{ $freeApps.RelPermalink }}"{{ if eq $filter "free" }} aria-current="page"{{ end }}>{{ i18n "filter_free" }}</a>
+      <a class="filter-btn{{ if eq $filter "paid" }} is-active{{ end }}" href="{{ $paidApps.RelPermalink }}"{{ if eq $filter "paid" }} aria-current="page"{{ end }}>{{ i18n "filter_paid" }}</a>
+    </nav>
+    {{- end }}
+  </header>
+  <div class="grid">
+    {{- range $apps.ByWeight }}
+      {{ partial "app-card.html" . }}
+    {{- end }}
+  </div>
+</section>
+{{ end }}

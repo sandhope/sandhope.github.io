@@ -1,0 +1,21 @@
+{{- $app := . }}
+{{- $slug := $app.Params.appSlug }}
+<a class="app-card" href="{{ $app.RelPermalink }}">
+  <div class="app-card-top">
+    {{- $icon := printf "/apps/%s/icon.png" $slug }}
+    {{- $iconFallback := printf "/apps/%s/icon.jpg" $slug }}
+    <img class="app-card-icon{{ if $app.Params.iosIcon }} ios-icon{{ end }}{{ if $app.Params.noRadius }} no-radius{{ end }}" src="{{ $icon | relURL }}" alt="{{ $app.Title }}" loading="lazy"
+         onerror="this.onerror=null;this.src='{{ $iconFallback | relURL }}'">
+    <div class="app-card-info">
+      <h3 class="card-title">{{ $app.Title }}</h3>
+      <p class="card-desc">{{ $app.Params.subtitle | default $app.Description }}</p>
+      <div class="tags">
+        {{- $age := now.Sub $app.Date }}
+        {{- if lt $age.Hours 720 }}<span class="tag tag-new">{{ i18n "new_badge" }}</span>{{ end }}
+        {{- if $app.Params.isPaid }}<span class="tag">{{ i18n "paid" }}</span>{{ else }}<span class="tag">{{ i18n "free" }}</span>{{ end }}
+        {{- if $app.Params.repoUrl }}<span class="tag">{{ i18n "open_source" }}</span>{{ end }}
+        {{- range $app.Params.platforms }}<span class="tag tag-platform">{{ . }}</span>{{ end }}
+      </div>
+    </div>
+  </div>
+</a>

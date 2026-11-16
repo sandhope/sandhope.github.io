@@ -1,0 +1,15 @@
+{{ define "main" }}
+<article class="project container">
+  <p class="breadcrumb-link"><a href="{{ "/blog" | relLangURL }}">&larr; {{ i18n "blog" }}</a></p>
+  <header class="project-head">
+    <h1 class="detail-title">{{ .Title }}</h1>
+    <p class="post-meta">
+      <time datetime="{{ .Date.Format "2006-01-02" }}">{{ i18n "published" }} {{ .Date.Format "2006-01-02" }}</time>
+      {{- with .Params.tags }}<span class="post-tags">{{ i18n "tags" }}: {{ delimit . ", " }}</span>{{ end }}
+    </p>
+  </header>
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,9 @@
+{{ define "main" }}
+<article class="project container">
+  <h1 class="detail-title">{{ .Title }}</h1>
+  {{- with .Description }}<p class="list-sub">{{ . }}</p>{{ end }}
+  <div class="prose">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

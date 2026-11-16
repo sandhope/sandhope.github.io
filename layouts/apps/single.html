@@ -1,0 +1,56 @@
+{{ define "main" }}
+{{- $app := . }}
+{{- $slug := $app.Params.appSlug }}
+{{- $icon := printf "/apps/%s/icon.png" $slug }}
+{{- $iconFallback := printf "/apps/%s/icon.jpg" $slug }}
+{{- $appStoreUrl := printf "https://apps.apple.com/app/id%v" $app.Params.appStoreId }}
+<article class="app-detail container">
+  <header class="app-detail-head">
+    <img class="app-detail-icon{{ if $app.Params.iosIcon }} ios-icon{{ end }}{{ if $app.Params.noRadius }} no-radius{{ end }}" src="{{ $icon | relURL }}" alt="{{ $app.Title }}"
+         onerror="this.onerror=null;this.src='{{ $iconFallback | relURL }}'">
+    <h1>{{ $app.Title }}</h1>
+    <h2>{{ $app.Params.subtitle | default $app.Description }}</h2>
+
+    <div class="app-badges">
+      {{- if $app.Params.appStoreId }}
+      <div class="share-wrap">
+        <a href="{{ $appStoreUrl }}" target="_blank" rel="noopener">
+          <img class="store-badge" src="{{ "assets/download-on-app-store-badge.svg" | relURL }}" alt="{{ i18n "download_app_store" }}">
+        </a>
+        <button id="share-button" class="share-btn" type="button" title="{{ i18n "share" }}" aria-label="{{ i18n "share" }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+        </button>
+      </div>
+      {{- end }}
+      {{- range $title, $url := $app.Params.mainLinks }}
+      <a class="btn btn-primary link-btn" href="{{ $url }}" target="_blank" rel="noopener">{{ $title }}</a>
+      {{- end }}
+    </div>
+
+    <nav class="app-links">
+      {{- range $title, $url := $app.Params.links }}
+      <a href="{{ $url }}">{{ $title }}</a>
+      {{- end }}
+      {{- if ne $app.Params.showSupportLink false }}
+      <a href="{{ relLangURL (printf "feedback?product=%s" ($app.Title | urlquery)) }}">{{ i18n "nav_support" }}</a>
+      <a href="{{ $app.RelPermalink }}privacy-policy/">{{ i18n "privacy_policy" }}</a>
+      {{- end }}
+      <a href="{{ "apps/terms" | relLangURL }}">{{ i18n "terms_of_use" }}</a>
+    </nav>
+  </header>
+
+  <div class="prose app-content">
+    {{ $app.Content }}
+  </div>
+</article>
+{{ if $app.Params.appStoreId }}<script>
+(function(){
+  var btn=document.getElementById('share-button');
+  var data={title:{{ $app.Title }},url:{{ $appStoreUrl }}};
+  if(btn && navigator.canShare && navigator.canShare(data)){
+    btn.style.display='inline-flex';
+    btn.addEventListener('click',function(){navigator.share(data).catch(function(){});});
+  }
+})();
+</script>{{ end }}
+{{ end }}
